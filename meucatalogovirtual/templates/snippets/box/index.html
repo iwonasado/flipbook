@@ -1,0 +1,81 @@
+{% load cms_tags menu_tags sekizai_tags %}
+        {% addtoblock "css" %}
+        <style>
+        .laptop-bg{
+        	margin: 10% 0 ;
+		    width:100%;
+		    background:url('/media/img/lpbg.jpg');   
+		    background-attachment: fixed;
+		    background-position: 50% 0;
+		    background-repeat: no-repeat;
+		    background-size: cover;
+		    padding:5% 0;
+		    position: relative;
+		    border-bottom: 5px solid #2a7abc;
+		}
+		.bluebox:after{
+			content:'';
+			position: absolute;
+			display: block;
+			width:5%;
+			height:30px;
+			background: url('/media/img/iconflip.png') no-repeat center;
+			top:10%;
+			left:-62px;
+		}
+		.bluebox{
+			width:65%!important; /* 1523/1700*/
+    		margin:0 auto!important;
+    		background-color: #359bed;
+    		border-left: 60px solid #fff;
+    		padding:2%;
+    		position: relative;
+		}
+		.subtitle{
+			font-weight: bold;
+			color:#dddddd;
+		}
+		.gray{
+			color:#dddddd;
+		}
+		.white{
+			color:#fff;
+		}
+		.small_{
+			font-size: 90%
+		}
+		.smallest{
+			font-size: 70%
+		}
+		h4{
+			color:#fff;
+		}
+		.orange-buttom{
+			color:#fff;
+			padding: 5px 30px;
+			border-bottom: 1px solid #ad8b17;
+			background-color: #FFBF00
+		}
+    	</style>
+        {% endaddtoblock %}
+<div style="position:relative">
+	<div class="laptop-bg" data-stellar-background-ratio="0">	
+		<div class="bluebox">
+			<h4>DEMOS</h4>
+			<br>
+			<p class="subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non venenatis ipsum.</p>	
+			<br>
+			<p class="gray">Aenean quis lectus ut velit tristique ultrices vitae eget risus. Maecenas iaculis feugiat nisi, at dapibus metus mollis a.</p>
+			<br>
+			<p class="small_ white">Donec nunc mi, fermentum nec arcu eget, semper accumsan diam. Suspendisse nisl leo, dictum sit amet porttitor et, vehicula convallis nisi. Sed facilisis nulla neque, eget congue nulla bibendum nec. </p>
+			<br>
+			<p class="smallest white">Nulla dapibus nisi augue, sed vestibulum nunc egestas consequat. Vestibulum porta leo cursus, fermentum velit id, tristique erat. Donec eget ligula tempus, dictum leo id, tempor velit. Ut ligula quam, pretium in urna eget, suscipit tristique eros.</p>
+			<br>
+			<br>
+			<a class="orange-buttom" href="{% url 'registrar_usuario' %}">REGISTRE-SE</a>
+		</div>
+	</div>
+</div>	
+        {% addtoblock "js" %}
+	
+{% endaddtoblock %}

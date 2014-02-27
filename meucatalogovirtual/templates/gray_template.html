@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% load cms_tags menu_tags sekizai_tags %}
+
+{% block base_content %}
+{% addtoblock "css" %}
+<link href='/media/css/gray_temp_style.css' rel='stylesheet' type='text/css'>
+{% endaddtoblock %}
+<header>
+	<nav id="nav_menu">
+		<ul>
+			{% show_menu 0 100 100 100 %}
+            <li class="right menu_lock">
+                <a href="{% url 'login' %}"><img src="/media/img/lock_small.png"></a>
+            </li>
+		</ul>
+	</nav>
+</header>
+
+<section id="template_content">
+  {% placeholder template_1_content %}
+</section>
+<footer>
+      
+    <section id="footer_header">
+        <h2>contato</h2>
+        <h6>links</h6>
+    </section>
+    
+    <section id="footer_body">
+        <div id="footer_contatos">
+            <div>
+                <span class="footer_round_icon"><a href="#"><img src="/media/img/face_round1.png" alt="Facebook"></a></span>
+                <span class="footer_round_icon"><a href="#"><img src="/media/img/twitter_round1.png" alt="Twitter"></a></span>
+                <span class="footer_round_icon"><a href="#"><img src="/media/img/skype_round1.png" alt="Skype"></a></span>
+                <br>
+                <br>
+            </div>
+            <div>
+                <ul>
+                    <li><span class="footer_round_icon"><img src="/media/img/tel_icon.png" alt="Telefone"></span><p class="footer_info"> 32 3232 3232</p></li>
+                    <li><span class="footer_round_icon"><img src="/media/img/mail_icon.png" alt="E-mail"></span><p class="footer_info"> email@email.com</p></li>
+                </ul>
+                <br>
+                <br>
+                <br>
+            </div>
+        </div>
+        <div id="footer_menu">
+            <ul>
+                {% show_menu 0 100 100 100 %}
+            </ul>
+        </div>
+    </section>
+    <span class="footer_body_division"></span>
+    <section id="footer_foot">
+        <p>c Copyright FlipBook 2013. Todos os direitos reservados</p>
+    </section>      
+</footer>
+{% endblock %}
+

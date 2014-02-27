@@ -1,0 +1,209 @@
+{% load cms_tags menu_tags sekizai_tags %}
+        {% addtoblock "css" %}
+	        <link rel="stylesheet" type="text/css" href="/media/slider/css/style.css" />
+	        <link rel="stylesheet" type="text/css" href="/media/slider/css/custom.css" />
+	   
+        {% endaddtoblock %}
+		
+        
+        <div class="slider-container">
+		
+            <div id="slider" class="sl-slider-wrapper">
+
+				<div class="sl-slider">
+					<!-- Slide 1-->
+					<div class="sl-slide" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
+						<div class="sl-slide-inner">
+							<div class="fade bg_box"><img src="/media/slider/img/bg_slide1.png"></div>
+							<div class="moveLeft show_box pos1">
+								<h5>CRIE SEU CATÁLOGO VIRTUAL</h5>
+								<p>	Crie seu catálogo virtual</p>
+								<hr>
+								<p style="color:white">
+									Lorem ipson dolor. Pron gravida nibh vel velit auctor liquet. Aneen solitucitudin, lorem quis bibendum auctor, nisi elit consequat ipsum.
+								</p>
+								<a class="link1" href="">CRIE SEU CATÁLOGO VIRTUAL</a>	
+							</div>
+							<div class="slider_bottom_box color1">
+								<p class="fade">Meu Catálogo Virtual permite que você extraia o máximo do seu catálogo criando um</p>
+								<h2 class="moveUp">SHOW DE APRESENTAÇÃO</h2>
+								<div>
+									<span class="roll hover_circle bg_img"><p>Galeria</p></span>
+									<span class="roll hover_circle bg_video"><p>Videos</p></span>
+									<span class="roll hover_circle bg_share"><p>Share</p></span>
+								</div>
+								<p class="fade">Seu catálogo transforma em uma apresentação completa do seu produto</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- Slide 2-->
+					<div class="sl-slide" data-orientation="vertical" data-slice1-rotation="10" data-slice2-rotation="-15" data-slice1-scale="1.5" data-slice2-scale="1.5">
+						<div class="sl-slide-inner">
+							<div class="fade bg_box"><img src="/media/slider/img/bg_slide2.png"></div>
+							<div class="moveLeft show_box pos2">
+								<h5>CRIE SEU CATÁLOGO VIRTUAL</h5>
+								<p>	Crie seu catálogo virtual</p>
+								<hr>
+								<p style="color:white">
+									Lorem ipson dolor. Pron gravida nibh vel velit auctor liquet. Aneen solitucitudin, lorem quis bibendum auctor, nisi elit consequat ipsum.
+								</p>
+								<a class="link2" href="">CRIE SEU CATÁLOGO VIRTUAL</a>	
+							</div>
+							<div class="slider_bottom_box color2">
+								<p class="fade">Meu Catálogo Virtual é uma plataforma que permite que você</p>
+								<h2 class="moveUp">CRIE SEu CATÀLOGO VIRTUAL</h2>
+								<div>
+									<span class="roll hover_circle bg_mag"><p>Galeria</p></span>
+									<span class="fade vertical_align"><img src="/media/slider/img/arrow_black.png"></span>
+									<span class="roll hover_circle bg_up"><p>Videos</p></span>
+									<span class="fade vertical_align"><img src="/media/slider/img/arrow_black.png"></span>
+									<span class="roll hover_circle bg_tab"><p>Share</p></span>
+								</div>
+								<p>Com poucos clicques transforme seu catálogo real em um catálogo virtual.</p>	
+							</div>
+						</div>
+					</div>
+					<!-- Slide 3-->
+					<div class="sl-slide" data-orientation="horizontal" data-slice1-rotation="3" data-slice2-rotation="3" data-slice1-scale="2" data-slice2-scale="1">
+						<div class="sl-slide-inner">
+							<div class="fade bg_box"><img src="/media/slider/img/bg_slide3.png"></div>
+							<div class="moveRight show_box pos3">
+								<h5>CRIE SEU CATÁLOGO VIRTUAL</h5>
+								<p>Como funciona esse visualizador incrível.</p>
+								<hr>
+								<p style="color:white">
+									Nós desenvolvemos uma página tão especial que ela permite a sua visualização mesmo ofiline. Desta maneiras seus clientes não precisam estar conectados o tempo todo.
+Ele permite que outras aplicações multimídia sejama dicionadas (vídeos, galerias de imagens e animações)
+								</p>
+								<a class="link3" href="">CRIE SEU CATÁLOGO VIRTUAL</a>	
+							</div>
+							<div class="slider_bottom_box color3">
+								<p class="fade">Compativel com as mais modernas plataformas</p>
+								<h2 class="moveUp">SEU CATÁLOGO SERÁ VISUALIZADO</h2>
+								<div class="slider_icon_box">
+									<span class="roll"><img src="/media/slider/img/safari_black.png"></span>
+									<span class="roll"><img src="/media/slider/img/chrome_black.png"></span>
+									<span class="roll"><img src="/media/slider/img/ff_black.png"></span>
+									<span class="fade"><img src="/media/slider/img/sep1.png"></span>
+									<span class="roll"><img src="/media/slider/img/android_black.png"></span>
+									<span class="roll"><img src="/media/slider/img/apple_black.png"></span>
+									<span class="roll"><img src="/media/slider/img/windows_black.png"></span>
+								</div>
+								<p>nas mais diferentes plataformas</p>
+							</div>
+						</div>
+					</div>
+				</div><!-- /sl-slider -->
+				
+				<nav id="nav-arrows" class="nav-arrows">
+					<span class="nav-arrow-prev">Previous</span>
+					<span class="nav-arrow-next">Next</span>
+				</nav>
+
+				<nav id="nav-dots" class="nav-dots">
+					<span class="nav-dot-current"></span>
+					<span></span>
+					<span></span>
+				</nav>
+
+			</div><!-- /slider-wrapper -->
+
+        </div>
+        {% addtoblock "js" %}
+		<script type="text/javascript">
+		var he = window.innerHeight)
+		$('.sl-slider-wrapper').css('height',he);
+		// $window.on( 'resize', function( event ) {
+		// 	$('.sl-slider-wrapper').css('height',he);
+  //       }
+		</script>
+		<script type="text/javascript" src="/media/slider/js/modernizr.custom.79639.js"></script>
+		<script type="text/javascript" src="/media/slider/js/jquery.ba-cond.min.js"></script>
+		<script type="text/javascript" src="/media/slider/js/jquery.slitslider.js"></script>
+		<script type="text/javascript">	
+			$(function() {
+			
+				var Page = (function() {
+
+					var $navArrows = $( '#nav-arrows' ),
+						$nav = $( '#nav-dots > span' ),
+						slitslider = $( '#slider' ).slitslider( {
+							onBeforeChange : function( slide, pos ) {
+
+								$nav.removeClass( 'nav-dot-current' );
+								$nav.eq( pos ).addClass( 'nav-dot-current' );
+
+							}
+						} ),
+
+						init = function() {
+
+							initEvents();
+							
+						},
+						initEvents = function() {
+
+							// add navigation events
+							$navArrows.children( ':last' ).on( 'click', function() {
+
+								slitslider.next();
+								return false;
+
+							} );
+
+							$navArrows.children( ':first' ).on( 'click', function() {
+								
+								slitslider.previous();
+								return false;
+
+							} );
+
+							$nav.each( function( i ) {
+							
+								$( this ).on( 'click', function( event ) {
+									
+									var $dot = $( this );
+									
+									if( !slitslider.isActive() ) {
+
+										$nav.removeClass( 'nav-dot-current' );
+										$dot.addClass( 'nav-dot-current' );
+									
+									}
+									
+									slitslider.jump( i + 1 );
+									return false;
+								
+								} );
+								
+							} );
+
+						};
+
+						return { init : init };
+
+				})();
+				
+		
+				Page.init();
+
+
+				/**
+				 * Notes: 
+				 * 
+				 * example how to add items:
+				 */
+
+				/*
+				
+				var $items  = $('<div class="sl-slide sl-slide-color-2" data-orientation="horizontal" data-slice1-rotation="-5" data-slice2-rotation="10" data-slice1-scale="2" data-slice2-scale="1"><div class="sl-slide-inner bg-1"><div class="sl-deco" data-icon="t"></div><h2>some text</h2><blockquote><p>bla bla</p><cite>Margi Clarke</cite></blockquote></div></div>');
+				
+				// call the plugin's add method
+				ss.add($items);
+
+				*/
+			
+			});
+		</script>
+{% endaddtoblock %}

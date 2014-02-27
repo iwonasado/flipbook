@@ -1,0 +1,49 @@
+{% load friendly %}
+{% load cms_tags menu_tags sekizai_tags %}
+<form id="form_gerador" name="{{ form_definition.name }}" action="{{ form_definition.action }}" method="{{ form_definition.method }}" enctype="multipart/form-data">
+    {% for entry in logs %}
+        {% for field in entry.data %}
+        <p>
+            <label for="">{{ field.label }}</label>
+            {{ field.value|friendly }}
+        </p>
+        {% endfor %}
+    {% endfor %}
+    {% for field in form %}
+        {% if not field.is_hidden %}
+            {{ field.errors }}
+            <p class="field {% if field.errors %}errors{% endif %}{% if field.field.required %}{% if field.errors %} {% endif %}required{% endif %}">
+                <label for="{{ field.auto_id }}">{{ field.label }}:</label>
+                {{ field }}
+                <br>
+                <br>
+            </p>
+        {% endif %}
+    {% endfor %}
+    <p class="buttons"> 
+    {% include "html/formdefinition/forms/includes/submit.html" %}
+    </p>
+    {% for field in form.hidden_fields %}
+        {{ field }}
+    {% endfor %}
+    {% csrf_token %}
+</form>
+{% addtoblock "js" %}
+	<script>
+    $(document).ready(function(){
+    	{% for field in form %}
+    		var element = $('#{{field.id_for_label}}')
+    		if(element.attr('type') != 'file'){
+    			element.attr('title','{{ field.label }}')
+    			$('label[for='+element.attr('id')+']').remove()
+    		}
+    			
+
+    	{% endfor %}
+    	$('input[type=submit]').addClass('bluebutton')
+        $("#form_gerador").formLabels({
+            refreshOnResize : true
+        });
+    });
+    </script>
+{% endaddtoblock %}

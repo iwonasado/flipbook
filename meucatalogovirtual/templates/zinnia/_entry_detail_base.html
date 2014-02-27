@@ -1,0 +1,45 @@
+{% load comments i18n %}
+{% load url from future %}
+{% load cms_tags menu_tags sekizai_tags %}
+<div class="grid_unit">
+  <div id="entry-{{ object.pk }}" class="grid_unit showBox_outter hentry{% if object.featured %} featured{% endif %}">
+    <a class="bigLink" href="{{ object.get_absolute_url }}" title="{{ object.title }}" rel="bookmark">
+    {% block entry-image %}
+    {% if object.image %}
+    <div class="hoverLink"></div>
+    <div class="showBox_img">
+      <p>
+        {% if continue_reading %}
+        <!--<a href="{{ object.get_absolute_url }}" title="{{ object.title }}" rel="bookmark">-->
+          {% endif %}
+          <img src="{{ object.image.url }}" alt="{{ object.title }}" class="left" />
+          {% if continue_reading %}
+        <!--</a>-->
+        {% endif %}
+      </p>
+    </div>
+    {% endif %}
+    {% endblock %}
+
+    <div class="showBox_content">
+      {% block entry-title %}
+    <h2 class="entry-title">
+      <!--<a href="{{ object.get_absolute_url }}" title="{{ object.title }}" rel="bookmark">-->
+        {{ object.title }}
+      <!--</a>-->
+    </h2>
+    {% endblock %}
+    {% block entry-content %}
+     <span class="small" style="width:70%">{{ object_content|truncatewords_html:10 }}</span>
+      {% endblock %}
+    </div>
+    </a>
+  </div>
+</div>
+{% block entry-info %}{% endblock %}
+{% block entry-last-update %}{% endblock %}
+{% block continue-reading %}{% endblock %}
+{% block entry-tags %}{% endblock %}
+{% block entry-shorturl %}{% endblock %}
+{% block entry-comments %}{% endblock %}
+  

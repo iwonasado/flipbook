@@ -1,0 +1,96 @@
+{% load cms_tags menu_tags sekizai_tags %}
+        {% addtoblock "css" %}
+			<link href="/media/carrosel/css/owl.carousel.css" rel="stylesheet">
+			<link href="/media/carrosel/css/owl.theme.css" rel="stylesheet">
+			<link href="/media/carrosel/css/style.css" rel="stylesheet">
+        {% endaddtoblock %}
+
+
+<div class="cr-content">
+	<h2>TRANSFORME SEU PROJETO</h2>
+	<div class="cr_wrapper ">
+		<div id="cr" class="owl-carousel">
+			<div class="owl-item tcolumn">
+				<div class="cr-item ">
+						<img src="/media/carrosel/img/conversion.png">
+						<h3>EASY AND FAST CONVERSION</h3>
+						<p>Bring your pdf file to the digital world, in just a few clicks! No softwere is needed in order to publish or view your Flip Book. Simply open and view your FBO trought your web browser!</p>
+				</div>
+			</div>
+			<div class="owl-item">
+				<div class="cr-item">
+						<img src="/media/carrosel/img/clock.png">
+						<h3><br>BE LIVE 24/7</h3>
+						<p>Being Live 24/7, 365 days a year, your Flip Books can be accessed quickly and easily by both your existing and potential customers, provide you unlimited distribution potential, and yet reaching only those really interested, bringing you cost savings (no print or postage costs)</p>
+				</div>
+			</div>
+			<div class="owl-item">
+				<div class="cr-item">
+						<img src="/media/carrosel/img/devices.png">
+						<h3>ENTER THE MOBILE WORLD!</h3>
+						<p>While upir Flip Book is creating, all needed files are created automatically to adapt your publication for use on popular mobile patforms as iPhone, or iPad. Owners of such devices will be able to use your FBO even wothout installing Flash Player.</p>
+				</div>
+			</div>
+			<div class="owl-item">
+				<div class="cr-item">
+						<img src="/media/carrosel/img/share.png">
+						<h3>SHARE TO SOCIAL NETWORK</h3>
+						<p>Share your FLip Book link to pages in Facebook and Twitter, copy and send your FLipBook link via e-mail, or even embed your publication into your own site.</p>
+				</div>
+			</div>
+			<div class="owl-item">
+				<div class="cr-item">
+						<img src="/media/carrosel/img/engrenagem.png">
+						<h3><br>FEATURES</h3>
+						<p>The key features of Flip Book Online solution include Full Text Search, Mobile view, Multi Level Zoom, Table of Contents, Sharing to Social Network and many more!</p>
+				</div>
+			</div>
+			<div class="owl-item">
+				<div class="cr-item">
+						<img src="/media/carrosel/img/sifrao.png">
+						<h3><br>PRICING</h3>
+						<p>If your are satisfied with the result of your Flip Book, you may purcahse it for $99,00. Price also includes totally free hosting at our servers for whole year as a welcome bonus!</p>
+				</div>
+			</div>
+			<div class="owl-item">
+				<div class="cr-item ">
+						<img src="/media/carrosel/img/support.png">
+						<h3><br>SUPPORT</h3>
+						<p>We constinuously work to make our Flip Book Online Service better and easy-to-use. However, if you encounter any problems, our support team is always ready to help</p>
+				</div>
+			</div>
+		</div>
+		<nav id="nav-arrows" class="nav-arrows">
+			<span class="nav-arrow-prev">Previous</span>
+			<span class="nav-arrow-next">Next</span>
+		</nav>
+
+	</div>
+	<a href="{% url 'registrar_usuario' %}" class="blue-buttom">REGISTRE_SE</a>
+</div>
+
+{% addtoblock "js" %}
+	<script src="/media/carrosel/js/owl.carousel.min.js"></script>
+	<script>
+		
+	   $(document).ready(function() {
+	 
+			var owl = $("#cr");
+			 
+			owl.owlCarousel({
+				pagination:false,
+				items : 4, //10 items above 1000px browser width
+				itemsDesktop : [1024,3], //5 items between 1024px and 901px
+				itemsDesktopSmall : [900,2], // betweem 900px and 601px
+				itemsTablet: [600,1], //2 items between 600 and 0
+				itemsMobile : [320,1] // itemsMobile disabled - inherit from itemsTablet option
+		});
+			$(".nav-arrow-next").click(function(){
+				owl.trigger('owl.next');
+			})
+			$(".nav-arrow-prev").click(function(){
+				owl.trigger('owl.prev');
+			})
+	});
+	</script>
+{% endaddtoblock %}

@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load cms_tags menu_tags sekizai_tags %}
+
+{% block base_content %}
+{% addtoblock "css" %}
+<link href='/media/css/rest_temp_style.css' rel='stylesheet' type='text/css'>
+{% endaddtoblock %}
+<header>
+	<nav id="nav_menu">
+		<ul>
+			{% show_menu 0 100 100 100 %}
+		</ul>
+	</nav>
+</header>
+
+<section id="template_content">
+<div class="banner icon lock"></div>
+<div class="login-box">
+    <form id="form_login" class="clearfix" method="post">
+        {% csrf_token %}
+        <h1>ÁREA RESTRITA</h1>
+        <div class="table">
+            <div class="table-cell">
+                <input class="field" type="text" title="Login"  name="username" value="" id="username"><br />
+                <input class="field" type="password" title="Senha"  name="password" value="" id="password">
+                <div class="table" style="font-size:70%"> 
+                    <div class="table-cell" ><input type="checkbox" name="vehicle" value="conected" class="inline middle"> <p class="inline middle">Permanecer conectado</p>
+                    <span style="width:130px; display:inline-block"></span>
+                    <a href="{% url 'password_reset' %}" class="inline middle">Esqueci minha senha</a></div>
+                    <div class="table-cell"></div>
+                </div>
+            </div>        
+            <div class="table-cell">
+                <input type="submit" name="submit" value="">
+            </div>
+            
+        </div>
+    </form>
+</div>
+</section>
+{% addtoblock "js" %}
+    <script>
+    $(document).ready(function(){
+        $("#form_login").formLabels({
+            refreshOnResize : true
+        });
+    });
+    </script>
+{% endaddtoblock %}
+
+{% endblock %}
+

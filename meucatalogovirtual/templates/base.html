@@ -1,0 +1,93 @@
+{% load cms_tags menu_tags sekizai_tags %}
+<html>
+  <head>
+      <title>Meu Catalogo Virtual - {% page_attribute "page_title" %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      {% render_block "css" %}
+	<link href='/media/css/reset.css' rel='stylesheet' type='text/css'>
+  <link href='/media/css/main_style.css' rel='stylesheet' type='text/css'>
+  <link href='/media/css/ingrid.css' rel='stylesheet' type='text/css'>
+	<link href='/media/css/jquery.share.css' rel='stylesheet' type='text/css'>
+  <link type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/themes/ui-darkness/jquery-ui.css" rel="stylesheet" />
+  <link type="text/css" rel="stylesheet" href="http://o2v.net/wp-content/plugins/syntax-highlighter-and-code-prettifier/styles/shCore.css" />
+  <link type="text/css" rel="stylesheet" href="http://o2v.net/wp-content/plugins/syntax-highlighter-and-code-prettifier/styles/shThemeDefault.css" />
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+  </head>
+  <body>
+      <div id="fb-root"></div>
+      <script>(function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/pt_BR/all.js#xfbml=1&appId=466212060065179";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+
+        setTimeout(function() {
+         $('#messages').fadeOut();
+        }, 3000 );
+
+
+      </script>
+      {% if messages %}
+        
+          <div id="messages">
+            {% for message in messages %}
+              <div {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</div>
+            {% endfor %}
+          </div> 
+        {% endif %}
+      {% cms_toolbar %}
+      {% placeholder base_content %}
+      
+
+      {% block base_content %}{% endblock %}
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+      <script src="/media/js/jquery.validate.min.js"></script>
+      <script src="/media/js/jquery.stellar.js"></script>
+      <script src="/media/js/jquery.formLabels.js"></script>
+      <script src="/media/js/jquery.share.js"></script>
+
+      {% render_block "js" %}
+      <script>
+          $(document).ready(function(){
+              $('.menu_lock').find('a').attr('title','Login')
+              $.stellar();
+              $('.bigLink').mouseenter( function () {
+                var w = $(this).height()
+                $(this).attr('data-content',$(this).attr('title'));
+                $(this).find('.hoverLink').show();
+                } 
+                ).mouseleave(function () {
+                  $(this).find('.hoverLink').hide();
+                  $(this).attr('data-content','');
+                });
+
+                //ACCORDION BUTTON ACTION 
+              $('.accordion li').children('pre').click(function() {
+                  $(this).parent().parent().find('li ul').slideUp('normal');  
+                  // $('.accordion li ul').slideUp('normal');  
+                  if($(this).next().is(':hidden') == true) {
+                    $(this).next().slideDown('normal');
+                  }
+                
+              });
+
+ 
+              //HIDE THE DIVS ON PAGE LOAD  
+                $('.accordion li ul').hide();
+
+                $('.m-grid').children('ul').addClass('grid_unit');
+
+                 $('.social_share').share({
+                    networks: ['facebook','twitter'],
+                    theme: 'custom'
+                });
+ 
+		    });
+      </script>
+  </body>
+</html>
+

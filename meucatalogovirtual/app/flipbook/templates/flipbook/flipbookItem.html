@@ -1,0 +1,40 @@
+{% load sekizai_tags %}
+    
+{% addtoblock "css" %}
+
+{% endaddtoblock %}
+<br>
+<br>
+<div class="size-1523">
+	<div class="size-1000 m-grid m-grid--divide-2">
+		{% for item in flipbooks %}
+		<div class="grid_unit">
+		  <div id="entry-{{ item.pk }}" class="grid_unit showBox_outter hentry">
+		    <a class="bigLink" href="{% url 'catalogos' slug=item.slug %}" title="{{ item.titulo }}" rel="bookmark">
+			    <div class="hoverLink"></div>
+			    {% if item.image %}
+			    <div class="showBox_img" style="height:0;padding-top:80%;position:relative;overflow:hidden;">
+			      <p>
+			          <img style="position:absolute;top:-50%;left:0;" src="{{ item.image.url }}" alt="{{ item.titulo }}" class="left" />
+			         
+			      </p>
+			    </div>
+			    {% endif %}
+
+		    <div class="showBox_content">
+		      
+				    <h2 class="entry-title">
+				        {{ item.titulo }}
+				    </h2>
+		     <span class="small" style="width:70%">{{ item.texto|truncatewords_html:10 }}</span>
+		    </div>
+		    </a>
+		  </div>
+		</div>
+		{% endfor %}
+	</div>
+</div>
+{% addtoblock "js" %}
+
+
+{% endaddtoblock %}

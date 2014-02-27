@@ -1,0 +1,93 @@
+<!doctype html>  
+<html lang="en" >  
+    <head>  
+        <meta charset="utf-8">  
+        <title>FlipBook</title>  
+        <meta name="description" content="Flipbook">  
+        <meta name="author" content="André Luiz Lé Sénéchal Paolino" >
+        <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+        <link href='http://fonts.googleapis.com/css?family=Roboto:100,700' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/media/flipbook/css/reset.css">  
+        <link rel="stylesheet" href="/media/flipbook/css/flipbook.css">  
+        <link rel="stylesheet" href="/media/flipbook/css/jquery.bxslider.css">
+        <link rel="stylesheet" href="/media/flipbook/css/jquery.share.css">
+        <link rel="stylesheet" href="/media/flipbook/css/colorbox.css">
+   
+        <!--[if lt IE 9]>  
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>  
+        <![endif]-->  
+        
+    </head>  
+    <body>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+        <script src='/media/flipbook/js/jquery.wipetouch.js'></script>
+        <script src='/media/flipbook/js/jquery.hammer.js'></script>
+        <script src="/media/flipbook/js/hammer.fakemultitouch.js"></script>
+        <script src="/media/flipbook/js/hammer.showtouches.js"></script>
+        <script src='/media/flipbook/js/flipbook.js'></script>
+        <script src="/media/flipbook/js/jquery.bxslider.js"></script>
+        <script src="/media/flipbook/js/jquery.share.js"></script>
+        <script src="/media/flipbook/js/jquery.colorbox.js"></script>
+        
+        <div id="message"></div>
+        <div id="view" >
+           <div class="magazine_frame">
+                <div id="magazine">
+                  <!--  <div class="page" data-thumb="images/cover_thumb.jpg">
+                        <img src="images/capa_full.jpg">
+                    </div>
+                    <div class="page" data-thumb="images/pageVideo_thumb.jpg">
+                        <div class="iframe" data-src="pages/pageVideo"><div class="html"></div></div>
+                    </div>
+                    <div class="page" data-thumb="images/pageGalery_thumb.jpg">
+                        <div class="iframe" data-src="pages/pageGalery"><div class="html"></div></div>
+                    </div>
+                    <div class="page" data-thumb="images/page1.png">
+                        <img src="images/page1.png">
+                    </div>
+                    <div class="page" data-thumb="images/page2.png">
+                        <img src="images/page2.png">
+                    </div>
+                    <div class="page" data-thumb="images/page3.png">
+                        <img src="images/page3.png">
+                    </div>
+                    <div class="page" data-thumb="images/page4.png">
+                        <img src="images/page4.png">
+                    </div>
+                    <div class="page" data-thumb="images/last.jpg">
+                        <img src="images/last.jpg">
+                    </div>
+                    
+                    -->
+                    {% for image in pages %}
+                        {% if image.zoom == True %}
+                            <div class="page zoom" data-thumb="{{ image.image.url }}">
+                        {% else %}
+                            <div class="page" data-thumb="{{ image.image.url }}">
+                        {% endif %}
+                            <img src="{{ image.image.url }}" alt="{{ image.alt }}" title="{{ image.longdesc }}" />
+                        </div>  
+                    {% endfor %}
+                </div>
+               </div>
+             <span class="next"></span>
+            <span class="prev"></span>
+        </div>
+        <div id="fixed_share">
+            <h6>Compartilhe!</h6>
+        </div>
+        
+        <div id="index_bar"><div class="index_slider" ></div></div>
+        <div id="fixed_footer">
+            <span class="footer_open"></span>
+            <div id="footer_icon_container">
+                <span class="icon index"></span>
+                <span class="icon share"></span>
+<!--                <span class="icon full"></span>-->
+            </div>
+        </div>
+        <div id="share_menu"></div>
+        
+    </body>
+</html>  

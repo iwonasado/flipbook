@@ -1,0 +1,192 @@
+{% extends "base.html" %}
+{% load cms_tags menu_tags sekizai_tags %}
+
+{% block base_content %}
+{% addtoblock "css" %}
+<link href='/media/css/rest_temp_style.css' rel='stylesheet' type='text/css'>
+<style>
+    #status{
+        line-height: 100px;
+        padding-left: 30px;
+    }
+</style>
+{% endaddtoblock %}
+<header>
+	<nav id="nav_menu">
+		<ul>
+			{% show_menu 0 100 100 100 %}
+		</ul>
+	</nav>
+</header>
+
+<section id="template_content">
+<div class="banner icon lock"></div>
+<div class="login-box">
+    <h1>Registrar-se</h1>
+      <form method="post" id="register_form" action="{% url 'registrar_usuario' %}">
+        {% csrf_token %}
+        <div class="table">
+            <div class="table-cell">
+                <div class="table">
+                 {%for item in form%}
+                    {% if forloop.counter = 1 or forloop.counter = 3  %}
+                        <div class="table-row">
+                    {% endif %}
+                    <div class="table-cell">
+                        <div class="input-wrapp">{{item}}</div>
+                    </div>
+                    {% if forloop.counter = 2 or forloop.counter = 4  %}
+                        </div>
+                    {% endif %}
+                  {%endfor%}
+                </div>  
+            </div>
+            <div class="table-cell" id="status"></div>
+        </div>
+        <br><br>
+        <input type="submit" id="sub" class="bluebutton" value="Cadastrar" />
+        
+        <input type="hidden" name="next" value="{{ next }}" />
+      </form>
+</div>
+
+
+</div>
+</section>
+{% addtoblock "js" %}
+    <script>
+    $(document).ready(function(){
+        var user,email = true;
+        {%for item in form %}
+            $('#{{ item.id_for_label}}').attr('title','{{item.label}}');
+        {%endfor%}
+        $("#form_login").formLabels({
+            refreshOnResize : true
+        });
+        $("#id_username").change(function(){ 
+            var username = $("#id_username").val();
+
+            if(username.length > 2){
+                var label = $('<label for="id_username" class="error"></label>')
+                $(this).after(label)
+                label.html('<img style="height:auto;width:auto"; src="/media/img/loader.gif" align="absmiddle">&nbsp;Verificando...');
+                $.ajax({  
+                    type: "POST",  
+                    url: "{% url 'avaiable_user' %}",  
+                    data: {
+                        username : username,
+                        csrfmiddlewaretoken: '{{ csrf_token }}'
+                        },
+                    success: function(msg){  
+
+                            if(msg == '0'){ 
+                                label.html('Nome de Usuario Disponivel!').show();
+                                user = true
+                                if (user ==true && email == true)
+                                    $("#sub").prop("disabled",false);
+                            }  
+                            else{  
+                                label.html(msg).show();
+                                user = false
+                                if (user == false || email == false)
+                                    $("#sub").prop("disabled",true);
+                                
+                            }  
+       
+                        
+                    } ,
+                    error : function(xhr,errmsg,err) {
+                        alert(xhr.status + ": " + xhr.responseText);
+                    }
+                }); 
+            }
+            
+            return false;
+        });  
+        $("#id_email").change(function(){ 
+            var email = $("#id_email").val();
+            var msgbox = $("#status");
+
+            
+                var label = $('<label for="id_email" class="error"></label>')
+                $(this).after(label)
+                label.html('<img style="height:auto;width:auto"; src="/media/img/loader.gif" align="absmiddle">&nbsp;Verificando...');
+                $.ajax({  
+                    type: "POST",  
+                    url: "{% url 'avaiable_email' %}",  
+                    data: {
+                        email : email,
+                        csrfmiddlewaretoken: '{{ csrf_token }}'
+                        },
+                    success: function(msg){  
+
+                            if(msg == '0'){ 
+                                label.html('E-Mail Disponivel!').show();
+                                email = true
+                                if (user ==true && email == true)
+                                    $("#sub").prop("disabled",false);
+                            }  
+                            else{  
+                                label.html(msg).show();
+                                email = false
+                                if (user == false || email == false)
+                                    $("#sub").prop("disabled",true);
+                            }  
+       
+                        
+                    } ,
+                    error : function(xhr,errmsg,err) {
+                        alert(xhr.status + ": " + xhr.responseText);
+                    }
+                }); 
+            
+            
+            return false;
+        });  
+    });    
+
+    $("#register_form").validate({
+        rules: {
+            username: {
+                required: true,
+                minlength: 2,
+                notavaiable: false
+            },
+            password: {
+                required: true,
+                minlength: 5
+            },
+            confirme_a_senha: {
+                required: true,
+                minlength: 5,
+                equalTo: "#id_password"
+            },
+            email: {
+                required: true,
+                email: true,
+                notavaiable: false
+            },
+        },
+        messages: {
+            username: {
+                required: "Please enter a username",
+                minlength: "Your username must consist of at least 2 characters"
+            },
+            password: {
+                required: "Please provide a password",
+                minlength: "Your password must be at least 5 characters long"
+            },
+            confirm_password: {
+                required: "Please provide a password",
+                minlength: "Your password must be at least 5 characters long",
+                equalTo: "Please enter the same password as above"
+            },
+            email: "Please enter a valid email address",
+            
+        }
+    });
+    </script>
+{% endaddtoblock %}
+
+{% endblock %}
+

@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load cms_tags menu_tags sekizai_tags %}
+{% load url from future %}
+{% block base_content %}
+{% addtoblock "css" %}
+<link href='/media/css/white_temp_style.css' rel='stylesheet' type='text/css'>
+{% endaddtoblock %}
+{% addtoblock "css" %}
+{% endaddtoblock %}
+<header>
+	<nav id="nav_menu">
+		<ul>
+			{% show_menu 0 100 100 100 %}
+            <li class="right menu_lock">
+                <a href="{% url 'login' %}"><img src="/media/img/lock_small.png"></a>
+            </li>
+		</ul>
+	</nav>
+</header>
+<!--<form method="get" action="{% url 'zinnia_entry_search' %}">
+          <p>
+            <input type="text" value="Busca" name="pattern" onfocus="this.value=''" />
+            <input type="submit" class="submitbutton" value="OK" />
+          </p>
+ </form>-->
+<section id="template_content">
+    <div class="box1"><div class="banner one icon feed" data-stellar-background-ratio="0.5"></div></div>
+    <div class="size-1000 m-grid m-grid--divide-2">
+        {% block content %}{% endblock %}
+    </div>
+</section>
+<footer>
+      
+    <section id="footer_header">
+        <h2>contato</h2>
+        <h6>links</h6>
+    </section>
+    
+    <section id="footer_body">
+        <div id="footer_contatos">
+            
+        </div>
+        <div id="footer_menu">
+            <ul>
+                {% show_menu 0 100 100 100 %}
+            </ul>
+        </div>
+    </section>
+    <span class="footer_body_division"></span>
+    <section id="footer_foot">
+        <p>c Copyright FlipBook 2013. Todos os direitos reservados</p>
+    </section>      
+</footer>
+{% endblock %}

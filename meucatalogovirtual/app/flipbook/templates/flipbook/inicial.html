@@ -1,0 +1,45 @@
+<!doctype html>  
+<html lang="en">  
+    <head>  
+        <meta charset="utf-8">  
+        <title>Flipbook</title>  
+        <meta name="description" content="FlipBook">  
+        <meta name="author" content="André Luiz Lé Sénéchal Paolino">  
+        <link href='http://fonts.googleapis.com/css?family=Roboto:100,700' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/media/flipbook/css/reset.css">  
+        <link rel="stylesheet" href="/media/flipbook/css/flipbook.css">
+        <link rel="stylesheet" href="/media/flipbook/css/jquery.share.css">
+        <!--[if lt IE 9]>  
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>  
+        <![endif]--> 
+        
+    </head>  
+    
+    <body style="background: none">
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+        <script src="/media/flipbook/js/jquery.share.js"></script>
+        <script>
+            $(document).ready(function(){
+                $('#cover_share').share({
+                    networks: ['email','facebook','twitter'],
+                    theme: 'custom'
+                });
+                
+            });
+        </script>
+        <div class="coverBg">
+            <div class="coverImg">
+                <a  href="flipbook"><img src="{{ MEDIA_URL }}{{ flipbook.image }}"></a>
+            </div>
+            <div class="coverTxt">
+                <img class="logo" src=" {{ MEDIA_URL }}{{ flipbook.logo }}">
+                <h1>{{ flipbook.titulo }}</h1>
+                <div class="whiteStripe"><h6>{{ flipbook.subtitulo }}</h6></div>
+                <p>{{ flipbook.texto }}</p>
+                <h6>Compartilhar!</h6>
+                <div id="cover_share"></div>
+            </div>
+        </div>
+    </body> 
+</html>  
